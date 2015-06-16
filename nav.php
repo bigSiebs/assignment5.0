@@ -26,7 +26,11 @@
                 if ($path_parts['filename'] == "index") {
                     print $link[0] . '/' . $link[0];
                 } else {
-                    print '../' . $link[0] . '/' . $link[0];
+                    print '../';
+                    if ($link[0] != 'index') {
+                        print $link[0] . '/';
+                    }
+                    print $link[0];
                 }
                 print '.php">' . $link[1] . '</a></li>';
             }
@@ -35,3 +39,4 @@
         ?>
         </ol> <!-- end nav menu -->
     </nav> <!-- end nav -->
+    

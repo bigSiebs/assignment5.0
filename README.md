@@ -5,3 +5,4 @@ Commit 1: Added top.php, header.php, nav.php, and footer.php, as well as index.p
 Commit 2: Modified top.php to include jQuery slider script. Added associated JS and CSS files. Modified index.php to include slider and uploaded slider images. Created stylesheet  for site.
 Commit 3: Modified index.php to include PHP code that generates image links at the bottom of the page. Uploaded four of the corresponding six images, as well as the CSV file. Tweaked CSS to so that img size is responsive.
 Commit 4: Significant changes to CSS stylesheet, particularly the nav bar. Small changes to index.html
+Commit 5: Modified logic of PHP code in nav.php. Modified CSS. Added play.php. Modified top.php to include form features only when included on contact.php.

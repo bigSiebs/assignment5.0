@@ -76,18 +76,38 @@ aside {
 }
 
 .fig-med {
-    width: 31.984%; /* 316px / 988px = 31.984% */
     float: left;
     margin: 0 2.024% 1.5em 0; /* 20px / 988px = 2.024% */
 }
 
+.fig-large {
+    margin: 1.5em 0;
+}
+
+article .fig-med {
+    width: 31.984%; /* 316px / 988px = 31.984% */
+}
+
+#main .fig-med {
+    width: 48.4662%; /* 316px / 652px = 48.4662% */
+}
+
+#main .fig-large {
+    width: 100%; /* 652px / 652px = 100% */
+}
+
 img {
-    width: 100%;
+    width: 100%; /* img not relative by default */
 }
 
 /* Text, headings, links, lists, etc. */
 * {
     font-family: Avenir, Helvetica, sans-serif;
+}
+
+figcaption {
+    font-size: 0.8em;
+    text-align: center;
 }
 
 h1, h2 {
@@ -105,6 +125,11 @@ h2 {
 
 h2 + p {
     margin-top: 1em;
+}
+
+h3 {
+    font-weight: bold;
+    margin: 1em 0;
 }
 
 i {
@@ -160,7 +185,7 @@ nav a:link, nav .active-page {
 /* Medium-sized displays */
 @media screen and (max-width: 600px) {
     .fig-med {
-        width: 46.6666%; /* 280 / 600 = 46.666%  */
+        width: 46.6666%; /* 280 / 600 = 46.666% */
     }
 
     #index #image-3,
