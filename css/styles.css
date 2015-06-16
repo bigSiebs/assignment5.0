@@ -81,6 +81,10 @@ aside {
     margin: 0 2.024% 1.5em 0; /* 20px / 988px = 2.024% */
 }
 
+img {
+    width: 100%;
+}
+
 /* Text, headings, links, lists, etc. */
 
 /* Header */
