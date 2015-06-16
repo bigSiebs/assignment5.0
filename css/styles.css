@@ -61,7 +61,7 @@ body {
     max-width: 61.75em; /* 988px / 16px = 61.75em */
 }
 
-header, nav, article, footer, .flexslider {
+header, nav, article, section, footer, .flexslider {
     clear: both; /* clear any floats; width unstated (100%) */
 }
 

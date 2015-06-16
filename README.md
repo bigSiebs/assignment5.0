@@ -6,3 +6,4 @@ Commit 2: Modified top.php to include jQuery slider script. Added associated JS 
 Commit 3: Modified index.php to include PHP code that generates image links at the bottom of the page. Uploaded four of the corresponding six images, as well as the CSV file. Tweaked CSS to so that img size is responsive.
 Commit 4: Significant changes to CSS stylesheet, particularly the nav bar. Small changes to index.html
 Commit 5: Modified logic of PHP code in nav.php. Modified CSS. Added play.php. Modified top.php to include form features only when included on contact.php.
+Commit 6: Added remaining pages. Added content to EAT page by way of PHP. Uploaded associated images and CSV file. Tweaked CSS.
