@@ -25,7 +25,10 @@
               media="screen" />
         
         <?php
-        //
+        // Include slider script if current page is home page
+        if ($path_parts['filename'] == 'index') {
+            include 'nonglobal/slider-script.php';
+        }
         // PATH SETUP
         // 
         // $domain = "https://www.uvm.edu" or "http://www.uvm.edu;

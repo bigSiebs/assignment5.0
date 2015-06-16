@@ -1,0 +1,137 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* ######################## end Reset CSS ################################### */
+
+/************************* Site-wide CSS **************************************/
+
+/* Fluid grid (three columns) page widths (see equations in comments) */
+body {
+    font: normal 100% Helvetica, Arial, sans-serif;
+}
+
+#page {
+    margin: 40px auto; /* margin at top/bottom */
+    padding: 0 1em; /* padding on sides */
+    max-width: 61.75em; /* 988px / 16px = 61.75em */
+}
+
+header, nav, article, footer {
+    clear: both; /* clear any floats; width unstated (100%) */
+}
+
+#main { /* id used for two-column main sections */
+    width: 65.992%; /* 652px / 988px = 65.992% */
+    float: left;
+}
+
+aside {
+    width: 31.984%; /* 316px / 988px = 31.984% */
+    float: right;
+}
+
+.fig-med {
+    width: 31.984%; /* 316px / 988px = 31.984% */
+    float: left;
+    margin: 0 2.024% 1.5em 0; /* 20px / 988px = 2.024% */
+}
+
+/* Text, headings, links, lists, etc. */
+
+/* Header */
+
+/* Navigation */
+
+/* Three-column article */
+
+/* Two-column article */
+
+/* Sidebar */
+
+/* Footer */
+
+/* General classes and ids */
+
+
+/************************* Page-specific CSS **********************************/
+
+/* Index page */
+
+#image-3,
+#image-6 {
+    margin: 0 0 1.5em 0; /* Remove right margin to fit 3rd image of each row */
+}
+
+
+/************** Media queries for responsive layout ***************************/
+
+/* Medium-sized displays */
+@media screen and (max-width: 600px) {
+    .fig-med {
+        width: 46.6666%; /* 280 / 600 = 46.666%  */
+    }
+
+    #index #image-3,
+    #index #image-5 { /* rules change grid from 2x3 to 3x2 */
+        clear: left;
+        margin: 0 2.024% 1.5em 0;
+    }
+}
+
+/* Mobile devices */
+@media screen and (max-width: 480px) {
+    #main, aside {
+        float: none; /* at this res, sidebar appears b/w main and footer */
+    }
+    
+    .fig-med {
+        float: none;
+        width: 65.8333%; /* 316px / 480px = 65.8333 */
+        margin: 1em auto !important; /* !important overrides margin settings */
+    }
+}
