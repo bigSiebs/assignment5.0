@@ -56,12 +56,12 @@ body {
 }
 
 #page {
-    margin: 40px auto; /* margin at top/bottom */
+    margin: 20px auto; /* margin at top/bottom */
     padding: 0 1em; /* padding on sides */
     max-width: 61.75em; /* 988px / 16px = 61.75em */
 }
 
-header, nav, article, footer {
+header, nav, article, footer, .flexslider {
     clear: both; /* clear any floats; width unstated (100%) */
 }
 
@@ -86,10 +86,49 @@ img {
 }
 
 /* Text, headings, links, lists, etc. */
+* {
+    font-family: Avenir, Helvetica, sans-serif;
+}
+
+h1, h2 {
+    font-weight: bold;
+    text-align: center;
+}
+
+h1 {
+    font-size: 1.5em;
+}
+
+h2 {
+    font-size: 1.25em;
+}
+
+h2 + p {
+    margin-top: 1em;
+}
+
+i {
+    font-style: italic;
+}
 
 /* Header */
 
 /* Navigation */
+nav ol {
+    width: 100%;
+}
+
+nav li {
+    display: block;
+    float: left;
+    width: 14.2713%; /* 141px / 988px = 14.2713% */
+}
+
+nav a:link, nav .active-page {
+    display: block;
+    padding: 1em 0;
+    text-align: center;
+}
 
 /* Three-column article */
 
@@ -106,8 +145,12 @@ img {
 
 /* Index page */
 
-#image-3,
-#image-6 {
+#index ol {
+    margin-top: 1em;
+}
+
+#index #image-3,
+#index #image-6 {
     margin: 0 0 1.5em 0; /* Remove right margin to fit 3rd image of each row */
 }
 
