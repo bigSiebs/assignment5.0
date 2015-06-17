@@ -3,52 +3,55 @@ include '../top.php';
 ?>
 
 <article id="main">
-        <?php
-        $debug = false;
-        if (isset($_GET["debug"])) {
-            $debug = true;
+    <h2>Grab a Bite!</h2>
+    
+    <?php
+    $debug = false;
+    if (isset($_GET["debug"])) {
+        $debug = true;
+    }
+
+    $myFilename = "restaurant-profiles";
+    $fileExt = ".csv";
+    $filename = $myFilename . $fileExt;
+
+    if ($debug)
+        print "\n\n<p>Filename is " . $filename . ".</p>";
+
+    $file = fopen("data/" . $filename, 'r');
+
+    if ($file) {
+        if ($debug) {
+            print "<p>File opened.</p>\n";
+            print "<p>Being reading data into an array.</p>\n";
         }
-        
-        $myFilename = "restaurant-profiles";
-        $fileExt = ".csv";
-        $filename = $myFilename . $fileExt;
-        
-        if ($debug) print "\n\n<p>Filename is " . $filename . ".</p>";
-        
-        $file = fopen("data/" . $filename, 'r');
-        
-        if ($file) {
-            if ($debug) {
-                print "<p>File opened.</p>\n";
-                print "<p>Being reading data into an array.</p>\n";
-            }
-            
-            // Read file headers
-            $headers = fgetcsv($file);
-            
-            if ($debug) {
-                print "<p>Finished reading headers.</p>\n";
-                print "<p>My header array:<p><pre>";
-                print_r($headers);
-                print "</pre></p></p>";
-            }
-            
-            // Read data
-            while (!feof($file)) {
-                $records[] = fgetcsv($file);
-            }
-            
-            // Close file
-            fclose($file);
-        
-            if ($debug) {
+
+        // Read file headers
+        $headers = fgetcsv($file);
+
+        if ($debug) {
+            print "<p>Finished reading headers.</p>\n";
+            print "<p>My header array:<p><pre>";
+            print_r($headers);
+            print "</pre></p></p>";
+        }
+
+        // Read data
+        while (!feof($file)) {
+            $records[] = fgetcsv($file);
+        }
+
+        // Close file
+        fclose($file);
+
+        if ($debug) {
             print "<p>Finished reading data. Filed closed.</p>\n";
             print "<p>My data array:<p><pre>";
             print_r($records);
             print "</pre></p></p>";
         }
     } // Ends if file opened statement
-        
+
     foreach ($records as $section) {
         if ($section != "") {
             print '<section class="profile">';
