@@ -181,6 +181,38 @@ nav a:link, nav .active-page {
 }
 
 
+/* Contact page */
+#contact article #main {
+    float: none;
+}
+
+fieldset {
+    clear: both; /* clear any existing floats */
+    float: left; /* pushes content to the left side of the box */
+}
+
+fieldset.contact label {
+    display: block;
+    text-align: right; /* lines up labels next to text inputs */
+}
+
+fieldset.contact input {
+    width: 15em;
+}
+
+fieldset.wrapper legend {
+    font-weight: bold
+}
+
+fieldset.wrapper > legend {
+    font-size: 1.5em; /* only first legend following class wrapper */
+}
+
+label {
+    display: block;
+    font-weight: bold;
+}
+
 /************** Media queries for responsive layout ***************************/
 
 /* Medium-sized displays */

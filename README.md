@@ -18,3 +18,5 @@ Commit 7: Added remaining pages. Added content to EAT page by way of PHP. Upload
 Commit 8: Added images for play.php and eat.php. Updated restaurant CSV file to include image credit and links to image URLs. Updated play.php with second figure. Added to eat.php, create.php, and volunteer.php, adding PHP code to render a table on the volunteer.php. Uploaded corresponding CSV file (opportunities.cv).
 
 Commit 9: Modified CSS for responsive design. Modified menu text in nav.php.
+
+Commit 10: Added comment skeleton to form page. Added basic HTML for first few fieldsets and basic CSS.
