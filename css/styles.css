@@ -147,6 +147,7 @@ nav li {
     display: block;
     float: left;
     width: 14.2713%; /* 141px / 988px = 14.2713% */
+    text-transform: uppercase;
 }
 
 nav a:link, nav .active-page {
@@ -183,8 +184,33 @@ nav a:link, nav .active-page {
 /************** Media queries for responsive layout ***************************/
 
 /* Medium-sized displays */
+@media screen and (max-width: 700px) {
+    nav li {
+        float: none;
+        width: 100%;
+        letter-spacing: 0.25em;
+        word-spacing: 0.75em;
+    }
+    
+    nav a:link, nav .active-page {
+        padding: 0.25em 0;
+    }
+}
+    
 @media screen and (max-width: 600px) {
-    .fig-med {
+    #main, aside {
+        float: none; /* at this res, sidebar appears b/w main and footer */
+    }
+    
+    #main {
+        width: 100%;
+    }
+    
+    aside {
+        width: 100%
+    }
+    
+    #index .fig-med {
         width: 46.6666%; /* 280 / 600 = 46.666% */
     }
 
@@ -196,9 +222,9 @@ nav a:link, nav .active-page {
 }
 
 /* Mobile devices */
-@media screen and (max-width: 480px) {
-    #main, aside {
-        float: none; /* at this res, sidebar appears b/w main and footer */
+@media screen and (max-width: 480px) {   
+    h3 {
+        text-align: center;
     }
     
     .fig-med {

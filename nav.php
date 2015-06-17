@@ -8,8 +8,8 @@
             array("eat", "Eat Out"),
             array("create", "Make Art"),
             array("volunteer", "Give Back"),
-            array("about", "Learn More"),
-            array("contact", "Contact Us")
+            array("about", "About"),
+            array("contact", "Contact")
         );
 
         // Run through array to add links to nav bar.
