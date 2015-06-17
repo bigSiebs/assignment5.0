@@ -47,6 +47,11 @@ $emailERROR = false;
 // Array to hold error messages
 $errorMsg = array();
 
+// Array to hold form values to be written to CSV file
+$dataRecord = array();
+
+$mailed = false; // Not mailed yet
+
 // %^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%
 //
 // SECTION 2: Process for when the form is submitted
@@ -72,6 +77,8 @@ if (isset($_POST['btnSubmit'])) {
     // Follow same order as declared in SECTION 1c.
     
     $email = filter_var($_POST['txtEmail'], FILTER_SANITIZE_EMAIL);
+    
+    $dataRecord[] = $email;
 
     // %^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%
     //
@@ -89,25 +96,65 @@ if (isset($_POST['btnSubmit'])) {
     //
     // SECTION 2d: Process form - passed validation (errorMsg is empty)
     
-    if (!errorMsg) {
+    if (!$errorMsg) {
         if ($debug) {
             print "<p>Form is valid.</p>";
         }
     
     // %^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%
     //
-    // SECTION 2e: Save data
-    //
+    // SECTION 2e: Save data: Save data to CSV file
+    
+        $fileExt = ".csv";
+        
+        $myFilename = "registration";
+        
+        $filename = $myFilename . $fileExt;
+        
+        if ($debug) {
+            print "\n\n<p>Filename is " . $filename . ".</p>";
+        }
+        
+        // Open file for append
+        $file = fopen('data/' . $filename, 'a');
+        
+        // Write to file
+        fputcsv($file, $dataRecord);
+        
+        // Close file
+        fclose($file);
 
     // %^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%
     //
     // SECTION 2f: Create message
-    //
+    
+        $message = "<h2>Thank you for providing much-needed information to GrowONE!</h2>";
+        $message.= "<p>A copy of your submission appears below.</p>";
+        
+        foreach ($_POST as $key => $value) {
+            $message.= "<p>";
+            $camelCase = preg_split('/(?=[A-Z])/', substr($key, 3));
+            
+            foreach ($camelCase as $one) {
+                $message.= $one . " ";
+            }
+            $message.= " = " . htmlentities($value, ENT_QUOTES, "UTF-8") . "</p>";
+        }
 
     // %^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%
     //
     // SECTION 2g: Mail to user
-    //
+    
+        $to = $email; // the person who filled out form
+        $cc = "";
+        $bcc = "";
+        $from = "GrowONE <noreply@w3.silk.uvm.edu>";
+        
+        // subject of mail should match form
+        $todaysDate = strftime("%x");
+        $subject = "Thanks for your interest in the ONE" . $todaysDate;
+        
+        $mailed = sendMail($to, $cc, $bcc, $from, $subject, $message);
     } // ends form is valid
 } // ends if form was submitted
 
@@ -128,7 +175,18 @@ if (isset($_POST['btnSubmit'])) {
     // If its the first time coming to form or there are errors, display form.
     if (isset($_POST["btnSubmit"]) AND empty($errorMsg)) { // closing marked with 'end body submit'
         print "<h2>Your request has ";
+        
+        if (!$mailed) {
+            print 'not ';
+        }
+        
         print "been processed.</h2>";
+        
+        if ($mailed) {
+            print "<p>A copy of this message has been sent to: " . $email . ".</p>";
+            print "<p>Mail message:</p>";
+            print $message;
+        }
         
     } else {
         

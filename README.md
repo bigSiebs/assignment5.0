@@ -22,3 +22,5 @@ Commit 9: Modified CSS for responsive design. Modified menu text in nav.php.
 Commit 10: Added comment skeleton to form page. Added basic HTML for first few fieldsets and basic CSS.
 
 Commit 11: Added security and validation features to form on contact.php. Updated CSS to include style for error-related elements. Tweaked form-features.php to reflect current page names.
+
+Commit 12: Added onmousehover JS feature to index.php. Uploaded associated images. Updated CSV to include hover images. Updated restaurant-profiles.csv to fix a mistake. Added form saving and mailing features to contact.php.

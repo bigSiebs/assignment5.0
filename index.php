@@ -85,7 +85,11 @@ include "top.php";
             print '<figure class="fig-med" id="image-' . strval($classNumber) . '">';
             
             print '<a href="' . $record[1] . '">';
-            print '<img src="images/' . $record[2] . '.jpg" alt="" />';
+            print '<img src="images/' . $record[2] . '.jpg"';
+            // JavaScript for hover images
+            print ' onmouseover="' . "this.src='images/" . $record[3] . ".jpg'" . '"';
+            print ' onmouseout="' . "this.src='images/" . $record[2] . ".jpg'" . '"';
+            print ' alt="" />';
             print '</a>';
             
             print '<figcaption>';
