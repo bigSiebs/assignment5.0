@@ -205,12 +205,32 @@ fieldset.wrapper legend {
 }
 
 fieldset.wrapper > legend {
-    font-size: 1.5em; /* only first legend following class wrapper */
+    font-size: 1.25em; /* only first legend following class wrapper */
 }
 
 label {
     display: block;
     font-weight: bold;
+}
+
+.mistake {
+    background-color: rgba(255, 0, 0, 0.1);
+    border: thin solid red;
+}
+
+.errors {
+    background-color: rgba(255, 0, 0, 0.1);
+    border-radius: 5px;
+    padding: 0.25em;
+}
+
+.errors ol {
+    list-style-position: inside;
+    list-style-type: disc;
+}
+
+.errors ol li {
+    color: #ff5555;
 }
 
 /************** Media queries for responsive layout ***************************/

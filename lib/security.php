@@ -21,7 +21,7 @@ function securityCheck($form = false) {
             $status = false;
         }
     }
-    return status; // set to false to test
+    return $status; // set to false to test
 }
 
 ?>

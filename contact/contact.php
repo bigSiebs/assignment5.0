@@ -8,53 +8,92 @@ include '../top.php';
 // %^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%
 // 
 // SECTION 1a: Variable for classroom purposes to help find errors
-//
+
+$debug = false;
+
+if (isset($_GET['debug'])) {
+    $debug = true;
+}
+
+if ($debug) {
+    print "<p>DEBUG MODE IS ON!</p>";
+}
 
 // %^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%
 //
 // SECTION 1b: Securtity
-//
+
+// define security variable to be used in SECTION 2a
+$yourURL = $domain . $phpSelf;
 
 // %^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%
 //
-// SECTION 1c: Form variables
-//
+// SECTION 1c: Form variables: Initalize variables, one for each form element,
+// in the order they appear on the form
+
+$email = "jsiebert@uvm.edu";
 
 // %^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%
 //
-// SECTION 1d: Form error flags
-//
+// SECTION 1d: Form error flags: Initalize ERROR flags, one for each form element
+// we validate, in the order they appear in SECTION 1c
+
+$emailERROR = false;
 
 // %^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%
 //
 // SECTION 1e: Misc. variables
-//
+
+// Array to hold error messages
+$errorMsg = array();
 
 // %^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%
 //
 // SECTION 2: Process for when the form is submitted
-//
+
+if (isset($_POST['btnSubmit'])) {
 
     // %^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%
     //
     // SECTION 2a: Security
-    //
+    
+    if (!securityCheck(true)) {
+        $msg = '<p>Sorry, you cannot access this page. ';
+        $msg.= 'Security breach detected and reported.';
+        die($msg);
+    }
+
 
     // %^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%
     //
     // SECTION 2b: Sanitize data
-    //
+    
+    // Remove any potential JS or HTML code from users input on the form.
+    // Follow same order as declared in SECTION 1c.
+    
+    $email = filter_var($_POST['txtEmail'], FILTER_SANITIZE_EMAIL);
 
     // %^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%
     //
-    // SECTION 2c: Validation
-    //
+    // SECTION 2c: Validation: Check each value for possible errors or empty.
+    
+    if ($email =="") {
+        $errorMsg[] = "Please enter your email address.";
+        $emailERROR = true;
+    } elseif (!verifyEmail($email)) {
+        $errorMsg[] = "Your email address appears to be incorrect.";
+        $emailERROR = true;
+    }
 
     // %^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%
     //
-    // SECTION 2d: Process form - passed validation
-    //
-
+    // SECTION 2d: Process form - passed validation (errorMsg is empty)
+    
+    if (!errorMsg) {
+        if ($debug) {
+            print "<p>Form is valid.</p>";
+        }
+    
     // %^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%
     //
     // SECTION 2e: Save data
@@ -69,14 +108,13 @@ include '../top.php';
     //
     // SECTION 2g: Mail to user
     //
+    } // ends form is valid
+} // ends if form was submitted
 
 // %^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%
 //
 // SECTION 3: Display form
 //
-?>
-
-
 ?>
 
 <article id="main">
@@ -86,18 +124,38 @@ include '../top.php';
     // %^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%
     //
     // SECTION 3a
-    //
     
-    // %^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%
-    //
-    // SECTION 3b: Error messages
-    //
+    // If its the first time coming to form or there are errors, display form.
+    if (isset($_POST["btnSubmit"]) AND empty($errorMsg)) { // closing marked with 'end body submit'
+        print "<h2>Your request has ";
+        print "been processed.</h2>";
+        
+    } else {
+        
     
-    // %^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%
-    //
-    // SECTION 3c: HTML form: Display HTML form
-    // Action is to this same page. $phpSelf is defined in top.php
-    //
+        // %^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%
+        //
+        // SECTION 3b: Error messages: Display any error message before we print form
+    
+        if ($errorMsg) {
+            print '<div class="errors">';
+            print "<ol>\n";
+            foreach ($errorMsg as $err) {
+                print "\t<li>" . $err . "</li>\n";
+            }
+            print "</ol>\n";
+            print "</div>";
+        }
+    
+        // %^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%
+        //
+        // SECTION 3c: HTML form: Display HTML form
+        // Action is to this same page. $phpSelf is defined in top.php
+        /* Note lines like: value="<?php print $email; ?> 
+         * These make the form sticky by displaying the default value or
+         * the value that was typed in previously.
+         * Also note lines like <?php if ($emailERROR) print 'class="mistake"'; ?> 
+         * These allow us to use CSS to identify errors with style. */
     ?>
     
     <form action="<?php print $phpSelf; ?>"
@@ -109,14 +167,15 @@ include '../top.php';
             <p>Take a moment to fill out the following form. Your information is very valuable to us as we strive to continue the growth of the Old North End.</p>
             
             <fieldset class="wrapperTwo">
-                <legend>Provide the your information</legend>
+                <legend>Provide your information</legend>
                 
                 <fieldset class="contact">
                     <legend>Contact Info</legend>
                     <label for="txtEmail" class="required">Email
                         <input type="text" id="txtEmail" name="txtEmail"
-                               value=""
+                               value="<?php print $email; ?>"
                                tabindex="100" maxlength="45" placeholder="Enter a valid email address"
+                               <?php if ($emailERROR) print 'class="mistake"'; ?>
                                onfocus="this.select()"
                                autofocus>
                     </label>
@@ -128,6 +187,9 @@ include '../top.php';
             </fieldset> <!-- end buttons -->
         </fieldset> <!-- end wrapper -->
     </form> <!-- end form -->
+    <?php 
+    } // end body submit
+    ?>
 </article>
 
 <aside>

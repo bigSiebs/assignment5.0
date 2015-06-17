@@ -20,3 +20,5 @@ Commit 8: Added images for play.php and eat.php. Updated restaurant CSV file to 
 Commit 9: Modified CSS for responsive design. Modified menu text in nav.php.
 
 Commit 10: Added comment skeleton to form page. Added basic HTML for first few fieldsets and basic CSS.
+
+Commit 11: Added security and validation features to form on contact.php. Updated CSS to include style for error-related elements. Tweaked form-features.php to reflect current page names.
