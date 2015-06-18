@@ -17,11 +17,12 @@ include "top.php";
         ?>
     </ul>
 </div>
-
+<hr />
 <article>
     <h2><i>The Old North End is...</i></h2>
     <p>...a neighborhood in Burlington, VT. Simply put, it's unlike any other part of Burlington, or even Vermont, and it's becoming more vibrant and unique by the day. The ONE, as it's known, is the most racially diverse area in the state, and it's a community-oriented area filled with tight-knit families and an active citizenry. More and more businesses, restaurants, and other organizations are moving into the area.</p>
     <p>This site, run by the nonprofit group Grow ONE, identifies the various ways in which Burlington residents and visitors can experience this unique neighborhood. Below, there are links to several pages that detail the reasons that you should visit the ONE as soon as possible!</p>
+    <hr />
     <?php
     $debug = false;
     if (isset($_GET["debug"])) {
