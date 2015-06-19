@@ -217,7 +217,7 @@ if (isset($_POST['btnSubmit'])) {
     //
     // SECTION 2f: Create message
     
-        $message = "<h2>Thank you for providing much-needed information to GrowONE!</h2>";
+        $message = "<h2>Thank you for providing much-needed information to Grow ONE!</h2>";
         $message.= "<p>A copy of your submission appears below.</p>";
         
         foreach ($_POST as $key => $value) {
@@ -237,7 +237,7 @@ if (isset($_POST['btnSubmit'])) {
         $to = $email; // the person who filled out form
         $cc = "";
         $bcc = "";
-        $from = "GrowONE <noreply@w3.silk.uvm.edu>";
+        $from = "Grow ONE <jsiebert@uvm.edu>";
         
         // subject of mail should match form
         $todaysDate = strftime("%x");
@@ -310,11 +310,11 @@ if (isset($_POST['btnSubmit'])) {
           id="frmRegister">
           
         <fieldset class="wrapper">
-            <legend>Help Us Out!</legend>
+            <legend></legend>
             <p>Take a moment to fill out the following form. Your information is very valuable to us as we strive to continue the growth of the Old North End.</p>
             
             <fieldset class="wrapperTwo">
-                <legend>Provide your information</legend>
+                <legend></legend>
                 
                 <fieldset class="contact">
                     <legend>Contact Info</legend>

@@ -9,9 +9,26 @@
         // Break the URL up into an array, then pull out just the filename
         
         $path_parts = pathinfo($phpSelf);
+
+        // Array for title content
+        $pages = array (
+            array("play", "Play - "),
+            array("eat", "Eat - "),
+            array("create", "Create - "),
+            array("volunteer", "Volunteer - "),
+            array("about", "About - "),
+            array("contact", "Contact Us - ")
+        );
+        
+        print '<title>';
+        foreach ($pages as $title) {
+            if ($path_parts['filename'] == $title[0]) {
+                print $title[1];
+            }
+        }
+        print 'Old North End | Burlington, VT</title>';
         ?>
         
-        <title>Old North End | Burlington, VT</title>
         <meta charset="utf-8" />
         <meta name="author" content="Joe Siebert" />
         <meta name="description" content="The Old North End is a neighborhood in Burlington, VT, and it’s unlike any other part of Burlington. The ONE is becoming more vibrant and unique by the day." />

@@ -86,6 +86,10 @@ aside {
     margin: 1.5em 0;
 }
 
+.fig-small figcaption {
+    text-size: 0.5em;
+}
+
 article .fig-med {
     width: 31.984%; /* 316px / 988px = 31.984% */
 }
@@ -151,42 +155,29 @@ i {
 
 /* Header */
 
-header .col1, .col2, .col3 {
+header .heading, .logo, .subheading {
     width: 31.984%; /* 316px / 988px = 31.984% */; 
     float: left;
-    margin: 0 2.024% 1.5em 0; /* 20px / 988px = 2.024% */
-}
-
-header .col1 {
-    text-align: right;
-}
-
-header .col2 {
+    margin-left: 34.0081%; /* 336px / 988px = 34.0081% */
     text-align: center;
 }
 
-header .col3 {
-    margin: 0 0 1.5em 0; /* remove right margin to fit on same line */
-    text-align: left;
-}
-
-header h1 {
-    position: absolute;
-    left: -9999px;
-}
-
-
-header p {
-    font-size: 1em;
+header .heading h1 {
+    font-size: 1.5em;
     font-style: italic;
     font-weight: normal;
-    position: relative;
-    top: 50%;
-    transform: translate(0, -50%);
+}
+
+header .subheading p {
+    font-size: 1.5em;
+    font-style: italic;
+    font-weight: normal;
+    text-indent: 0;
+    margin: 0 0 0.5em 0;
 }
 
 header figure {
-    width: 100%; /* take up whole div (col2) */
+    width: 100%; /* take up whole div (logo) */
 }
 
 /* Navigation */
@@ -198,7 +189,7 @@ nav li {
     display: block;
     float: left;
     width: 14.2713%; /* 141px / 988px = 14.2713% */
-    text-size: 0.8em;
+    font-size: 0.8em;
     text-transform: uppercase;
 }
 
@@ -211,6 +202,10 @@ nav a, nav .active-page {
     text-align: center;
 }
 
+nav .active-page {
+    background-color: #6fa185;
+}
+
 nav a:hover, nav a:active {
     color: black;
     background-color: #e57ca7;
@@ -218,17 +213,34 @@ nav a:hover, nav a:active {
 }
 
 /* Three-column article */
+article {
+    margin-bottom: 1em;
+}
 
 /* Two-column article */
 
 /* Sidebar */
 aside p {
     text-indent: 0;
+    font-size: 0.8em;
+    text-align: justify;
 }
 
 /* Footer */
 footer {
+    color: white;
+    background-color: #566aa8;
     text-align: center;
+    margin-top: 0.5em;
+    padding: 1em;
+}
+
+footer p {
+    text-indent: 0;
+}
+
+footer a:link {
+    color: white;
 }
 
 /* General classes and ids */
@@ -247,12 +259,23 @@ footer {
     margin: 0 0 1.5em 0; /* Remove right margin to fit 3rd image of each row */
 }
 
+#index p.credit-line {
+    font-size: 0.8em;
+    text-align: center;
+    clear: both;
+    margin: 0;
+}
 
 /* Create page */
 iframe {
     width: 100%;
     height: 300px;
     margin-top: .5em;
+}
+
+/* Eat page */
+#eat section p {
+    text-indent: 0;
 }
 
 /* Volunteer page */
@@ -286,6 +309,32 @@ tr:hover {
     background-color: #e57ca7;
 }
 
+/* About page */
+#about #bio {
+    background-color: #e57ca7;
+    padding: 0.5em;
+    margin-top: 0.5em;
+    border-radius: 15px;
+}
+
+#about #bio .fig-small {
+    float: left;
+    margin-right: 1em;
+    width: 23.0061%; /* 150px / 652px = 23.0061 */
+}
+
+#about #bio p {
+    text-indent: 0;
+    line-height: 1.4em;
+    text-align: justify;
+}
+
+#about ul {
+    list-style-type: disc;
+    list-style-position: inside;
+    text-indent: 3em;
+}
+
 /* Contact page */
 #contact article #main {
     float: none;
@@ -294,11 +343,24 @@ tr:hover {
 fieldset {
     clear: both; /* clear any existing floats */
     float: left; /* pushes content to the left side of the box */
+    margin-top: 0.5em;
+}
+
+fieldset.checkbox > legend, fieldset.radio > legend {
+    font-size: 1em;
+}
+
+fieldset.comments label, fieldset.listbox label {
+    font-weight: bold;
 }
 
 fieldset.comments textarea {
-    width: 25em;
+    width: 22em;
     height: 4em;
+}
+
+fieldset.contact, fieldset.personal, fieldset.feedback {
+    margin-top: 1em;
 }
 
 fieldset.contact label {
@@ -307,24 +369,35 @@ fieldset.contact label {
 }
 
 fieldset.contact input {
-    width: 15em;
+    width: 13em;
+}
+
+fieldset.wrapper {
+    border: 1px solid #566aa8;
+    padding: .75em;
+    border-radius: 15px;
 }
 
 fieldset.wrapper legend {
-    font-weight: bold
-}
-
-fieldset.wrapper > legend {
-    font-size: 1.25em; /* only first legend following class wrapper */
+    font-weight: bold;
 }
 
 label {
     display: block;
-    font-weight: bold;
+    font-weight: normal;
+    margin-top: 0.5em;
+}
+
+legend {
+    font-size: 1.25em;
 }
 
 legend + p {
     text-indent: 0;
+}
+
+select, textarea {
+    margin-top: 0.5em;
 }
 
 .mistake {
@@ -372,8 +445,14 @@ legend + p {
         width: 100%;
     }
     
+    header .heading, .logo, .subheading {
+        width: 52.6666%; /* 316 / 600 = 52.6666 */
+        font-size: 1em;
+        margin-left: 23.6666%;
+    }
+    
     aside {
-        width: 100%
+        width: 100%;
     }
     
     #index .fig-med {
@@ -389,13 +468,11 @@ legend + p {
 
 /* Mobile devices */
 @media screen and (max-width: 480px) {   
+    header .heading, .logo, .subheading {
+        width: 65.8333%; /* 316px / 480px = 65.8333 */
+        margin-left: 17.0833%;
+    }
     h3 {
         text-align: center;
-    }
-    
-    .fig-med {
-        float: none;
-        width: 65.8333%; /* 316px / 480px = 65.8333 */
-        margin: 1em auto !important; /* !important overrides margin settings */
     }
 }

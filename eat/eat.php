@@ -4,7 +4,7 @@ include '../top.php';
 
 <article id="main">
     <h2>Grab a Bite!</h2>
-    
+    <p>There are several quality restaurants in the Old North End. We've highlighted some below.</p>
     <?php
     $debug = false;
     if (isset($_GET["debug"])) {

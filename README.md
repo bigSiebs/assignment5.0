@@ -26,3 +26,5 @@ Commit 11: Added security and validation features to form on contact.php. Update
 Commit 12: Added onmousehover JS feature to index.php. Uploaded associated images. Updated CSV to include hover images. Updated restaurant-profiles.csv to fix a mistake. Added form saving and mailing features to contact.php.
 
 Commit 13: Many changes. Much CSS added. Remaining form elements added. Uploading corrected version of image-links.csv.
+
+Commit 14: Added content to about.php. Many minor changes, esp. to CSS and section files (top.php, etc.) Added images to several pages. Tweaked PHP code here and there.
